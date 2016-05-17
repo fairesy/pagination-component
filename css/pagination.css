@@ -1,0 +1,58 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+/*
+index li size = 40px x 40px
+ul size = li size x 7 = 280px x 40px
+*/
+ul,li{
+  margin: 0;
+  padding: 0;
+}
+a{
+  text-decoration: none;
+  color: rgb(40,40,40);
+}
+/*데모용 배치*/
+ul{
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+/*//데모용*/
+
+/*component css*/
+.pagination{
+  width: 242px;
+  height: 30px;
+  box-sizing: border-box;
+  font-family: "Nanum Gothic", sans-serif;
+  font-weight: 900;
+}
+.pagination li{
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  list-style: none;
+  float: left;
+  margin-right: 5px;
+  border-radius: 10%;
+  box-sizing: border-box;
+}
+.pagination li:hover{
+  background-color: rgb(230,230,230);
+}
+.activate{
+  background-color: rgb(42,125,237);
+}
+.activate a{
+  color: #fff;
+}
+.pagination li:first-child, .pagination li:last-child{
+  border-radius: 50%;
+}
+.pagination li:last-child{
+  margin-right: 0;
+}
