@@ -12,13 +12,32 @@ a{
   color: rgb(40,40,40);
 }
 /*데모용 배치*/
-ul{
+main{
+  width: 240px;
+  height: 170px;
   position: absolute;
   margin: auto;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
+}
+#todo-list{
+  margin: 0 0 30px 0;
+  font-family: "Nanum Gothic", sans-serif;
+  font-size: 11pt;
+}
+#todo-list li{
+  list-style: none;
+  height: 30px;
+  line-height: 30px;
+  width: 100%;
+  background-color: rgb(230,230,230);
+  padding-left: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  margin: 0 0 10px 0;
 }
 /*//데모용*/
 
