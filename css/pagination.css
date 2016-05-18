@@ -1,8 +1,11 @@
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
 /*
 index li size = 40px x 40px
 ul size = li size x 7 = 280px x 40px
 */
+body{
+  font: 14px 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #f5f5f5;
+}
 ul,li{
   margin: 0;
   padding: 0;
@@ -11,33 +14,35 @@ a{
   text-decoration: none;
   color: rgb(40,40,40);
 }
-/*데모용 배치*/
+/*데모용*/
 main{
   width: 240px;
-  height: 170px;
+  height: 240px;
   position: absolute;
   margin: auto;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
+  padding: 30px 0 0 0;
+  box-sizing: border-box;
+  background: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2),
+	            0 25px 50px 0 rgba(0, 0, 0, 0.1);
 }
-#todo-list{
+.todo-list{
   margin: 0 0 30px 0;
-  font-family: "Nanum Gothic", sans-serif;
   font-size: 11pt;
 }
-#todo-list li{
+.todo-list li{
   list-style: none;
-  height: 30px;
-  line-height: 30px;
   width: 100%;
-  background-color: rgb(230,230,230);
+  height: 40px;
+  line-height: 40px;
   padding-left: 10px;
   padding-right: 10px;
   box-sizing: border-box;
-  border-radius: 10px;
-  margin: 0 0 10px 0;
+  border-bottom: 2px solid #ededed;
 }
 /*//데모용*/
 
@@ -46,7 +51,6 @@ main{
   width: 242px;
   height: 30px;
   box-sizing: border-box;
-  font-family: "Nanum Gothic", sans-serif;
   font-weight: 900;
 }
 .pagination li{
@@ -60,13 +64,11 @@ main{
   border-radius: 10%;
   box-sizing: border-box;
 }
-.pagination li:hover{
-  background-color: rgb(230,230,230);
-}
-.activate{
+
+.selected{
   background-color: rgb(42,125,237);
 }
-.activate a{
+.selected a{
   color: #fff;
 }
 .pagination li:first-child, .pagination li:last-child{
