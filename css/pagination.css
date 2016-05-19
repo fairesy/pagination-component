@@ -14,9 +14,12 @@ a{
   text-decoration: none;
   color: rgb(40,40,40);
 }
+input[type="checkbox"] {
+    outline: none;
+}
 /*데모용*/
 main{
-  width: 240px;
+  width: 440px;
   height: 240px;
   position: absolute;
   margin: auto;
@@ -44,12 +47,45 @@ main{
   box-sizing: border-box;
   border-bottom: 2px solid #ededed;
 }
+.todo-list li .toggle{
+  width: 30px;
+  height: 30px;
+  position: relative;
+	top: 0;
+  bottom: 0;
+  margin: 0 16px 0 0;
+  border: none;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+.todo-list li .toggle:after {
+  position: absolute;
+  top: 0;
+	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>');
+}
+
+.todo-list li .toggle:checked:after {
+  position: absolute;
+  top: 0;
+	content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+}
+
+.todo-list li label{
+  white-space: pre-line;
+  transition: color 0.4s;
+}
+.todo-list li.completed label {
+	color: #d9d9d9;
+	text-decoration: line-through;
+}
 /*//데모용*/
 
 /*component css*/
 .pagination{
   width: 242px;
   height: 30px;
+  margin: 0 auto;
   box-sizing: border-box;
   font-weight: 900;
 }
