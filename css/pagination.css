@@ -72,7 +72,7 @@ main{
 }
 
 .todo-list li label{
-  white-space: pre-line;
+  vertical-align: top;
   transition: color 0.4s;
 }
 .todo-list li.completed label {
