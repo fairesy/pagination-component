@@ -1,4 +1,4 @@
-var TODO = (function(){
+define(["jquery", "ajax", "handlebars", "todo.template"], function($, AJAX, Handlebars, Template){
 	"use strict";
 	var $todoListContainer = $(".main");
 	var $todoList = $('.todo-list');
@@ -44,4 +44,5 @@ var TODO = (function(){
 		init : init,
 		compile : compileTodoFromTemplate
 	}
-})();
+
+});

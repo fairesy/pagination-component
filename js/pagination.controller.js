@@ -1,3 +1,6 @@
+/*
+컴포넌트화 하기 이전 코드
+*/
 var Pagination = (function(){
   "use strict";
   var $selectedLi = $(".pagination .selected");

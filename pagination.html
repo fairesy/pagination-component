@@ -3,48 +3,25 @@
   <head>
     <meta charset="utf-8">
     <title>pagination-component</title>
+    <link rel="stylesheet" href="css/todo.css" media="screen">
     <link rel="stylesheet" href="css/pagination.css" media="screen">
   </head>
   <body>
-    <!--
-    activate : 현재 있는 페이지의 인덱스
-    disabled : <, > 각각 끝 인덱스에서 disable
-    -->
     <main>
       <ul class="todo-list">
-        <!-- <li data-id="1111" class="completed">
-          <input class="toggle" type="checkbox" checked>
-          <label>item1</label>
-        </li>
-        <li data-id="1111" class="">
-          <input class="toggle" type="checkbox">
-          <label>item2</label>
-        </li>
-        <li data-id="1111" class="">
-          <input class="toggle" type="checkbox">
-          <label>item3</label>
-        </li> -->
+        <!--todos-->
       </ul>
 
       <ul class="pagination">
-        <li class="prev"><a href="#">&#60;</a></li>
-        <li class="selected"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li class="next"><a href="#">&#62;</a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
       </ul>
     </main>
-    <!-- <script type="text/javascript" src="bower_components/requirejs/require.js"></script> -->
-    <script type="text/javascript" src="node_modules/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="node_modules/handlebars/dist/handlebars.min.js"></script>
-    <script type="text/javascript" src="bower_components/eventEmitter/EventEmitter.min.js"></script>
-    <script type="text/javascript" src="js/pagination.component.js"></script>
-    <script type="text/javascript" src="js/todo.template.js"></script>
-    <script type="text/javascript" src="js/ajax.js"></script>
-    <script type="text/javascript" src="js/todo.controller.js"></script>
-    <!-- <script type="text/javascript" src="js/pagination.controller.js"></script> -->
-    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" data-main="js/app" src="bower_components/requirejs/require.js"></script>
   </body>
 </html>
