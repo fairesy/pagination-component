@@ -101,6 +101,12 @@ main{
   box-sizing: border-box;
 }
 
+.disabled a{
+  color: #d9d9d9;
+  pointer-events: none;
+  cursor: default;
+}
+
 .selected{
   background-color: rgb(42,125,237);
 }

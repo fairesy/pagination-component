@@ -1,4 +1,3 @@
-
 var TODO = (function(){
 	"use strict";
 	var $todoListContainer = $(".main");
@@ -6,11 +5,11 @@ var TODO = (function(){
 	var BASE_URL = "http://128.199.76.9:8002/fairesy";
 
 	function init(){
-		loadAllTodo();
+		loadTodosOnFirstPage();
 		$todoList.on("click", ".toggle", completeTodo);
 	}
 
-	function loadAllTodo(){
+	function loadTodosOnFirstPage(){
 		AJAX.get(BASE_URL+"/page?start=0&limit=3")//문자열 합치는 함수 뭐 없던가...?
 		.done(function(allTodo){
 				$todoList.append(allTodo.map(function(todo){
@@ -42,6 +41,7 @@ var TODO = (function(){
 	}
 
 	return {
-		init : init
+		init : init,
+		compile : compileTodoFromTemplate
 	}
 })();
