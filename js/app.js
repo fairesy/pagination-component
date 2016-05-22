@@ -15,7 +15,8 @@ require([
 ], function($, AJAX, TODO, Pagination){
   $(document).ready(function(){
     TODO.init();
-    var pagination = new Pagination(".pagination");
+    var total = 5; //http://128.199.76.9:8002/fairesy/count : cnt
+    var pagination = new Pagination(".pagination", {"totalNumberOfPages": total, "unitSize" : 5});
 
     pagination.on("change", function(e){
       var selectedIndex = e.index;
