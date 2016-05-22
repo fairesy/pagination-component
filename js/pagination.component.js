@@ -3,15 +3,15 @@ define(["jquery", "eventEmitter"], function($, EventEmitter){
     this.ee = new EventEmitter();
     this.pagination = $(element);
     this.option = option || {"unitSize" : 5};
-    this.selectedLi;this.selectedIndex;
-    this.prevArrow;this.nextArrow;
+    this.selectedLi; this.selectedIndex;
+    this.prevArrow; this.nextArrow;
     this.init();
   }
   pagination.prototype.init = function(){
     this._setPaginationNumbers(1);
     this._setPrevNextArrow();
     this.pagination.on("click", "a", $.proxy(this, "_move"));
-    console.log("pagination init end");
+    console.log("pagination component initialization end");
   }
 
   pagination.prototype._setPrevNextArrow = function(){
@@ -43,13 +43,14 @@ define(["jquery", "eventEmitter"], function($, EventEmitter){
   pagination.prototype._move = function(e){
     this._addSelectedToCurrentIndex(e);
     this.selectedIndex = parseInt(this.selectedLi.find("a").text());
-    console.log("selected index is " + this.selectedIndex);
     this._checkIfArrowShouldBeDisabled(this.selectedIndex);
 
     this.ee.emit("change", {
       "index" : this.selectedIndex,
       "max" : 3
     });
+
+    console.log("selected index is " + this.selectedIndex);
   }
   pagination.prototype.on = function(eventName, fp){
     this.ee.addListener(eventName, fp);
@@ -89,7 +90,7 @@ define(["jquery", "eventEmitter"], function($, EventEmitter){
     if(selectedIndex === 1){
       this.prevArrow.addClass("disabled");
       this.nextArrow.removeClass("disabled");
-    }else if(selectedIndex === this.option.f\){
+    }else if(selectedIndex === this.option.unitSize){
       this.nextArrow.addClass("disabled");
       this.prevArrow.removeClass("disabled");
     }else{
