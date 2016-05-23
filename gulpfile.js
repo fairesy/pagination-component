@@ -9,9 +9,10 @@ gulp.task("default", ["watch", "concat-production"], function() {
 });
 
 gulp.task("jscs", function(){
-  return gulp.src("js/app.js")
+  return gulp.src("js/*.js")
         .pipe(jscs({fix:true}))
-        .pipe(jscs.reporter());
+        .pipe(jscs.reporter())
+        .pipe(gulp.dest("js/"));
 });
 
 gulp.task("concat-production", function(){

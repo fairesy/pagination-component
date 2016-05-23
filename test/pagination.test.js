@@ -1,48 +1,50 @@
-// define([
-//   "chai",
-//   "../js/pagination.component"
-// ],function(chai, Pagination){
-//   var mocha = require("mocha");
-//   var expect = require("chai").expect;
-//
-//   describe("pagination", function(){
-//     it("should be true", function(){
-//       expect(true).to.be.true;
-//     });
-//   });
-// 
-//   describe("", function(){
-//     it("should set indexes", function(){
-//
-//     });
-//
-//     it("should set prev&next arrows", function(){
-//
-//     });
-//
-//     it("should add 'selected' class on current index", function(){
-//
-//     });
-//
-//     it("should check 'disabled' class is needed", function(){
-//
-//     });
-//   });
-//
-//
-// });
+"use strict";
+define([
+  "jquery",
+  "QUnit",
+  "pagination.component"
+], function($, QUnit, Pagination){
+  var run = function(){
+    var pagination;
+    var $selectedLi;
 
-define(function(require) {
-  var Pagination= require('../js/pagination.component');
-
-  describe('Pagination', function() {
-
-    describe('initialization', function() {
-      it("should be true", function(){
-        expect(true).to.be.true;
-      });
+    QUnit.module( "pagination initialization", {
+      beforeEach: function() {
+        pagination = new Pagination(".pagination");
+        $selectedLi = pagination.selectedLi;
+      }
     });
+    QUnit.test("_addSelectedToCurrentIndex() : 선택한 페이지 인덱스에 selected 클래스 추가", function(assert) {
+      //Given : 현재 1페이지
+      var $targetLi = pagination.pagination.children("li").eq(2);
+      //When
+      pagination._addSelectedToCurrentIndex({
+        target : $targetLi.children("a").eq(0)
+      });
+      //Then
+      assert.ok($targetLi.hasClass("selected"));
+    });
+    QUnit.test("_checkIfArrowShouldBeDisabled() : 1페이지에서 < disable", function(assert) {
+      //Given
+      var selectedIndex = 1;
+      var $prevArrow = pagination.prevArrow;
+      //When
+      pagination._checkIfArrowShouldBeDisabled(selectedIndex);
+      //Then
+      assert.ok($prevArrow.hasClass("disabled"));
+    });
+    QUnit.test("_checkIfArrowShouldBeDisabled() : 5페이지에서 > disable", function(assert) {
+      //Given
+      var selectedIndex = 5;
+      var $nextArrow = pagination.nextArrow;
+      //When
+      pagination._checkIfArrowShouldBeDisabled(selectedIndex);
+      //Then
+      assert.ok($nextArrow.hasClass("disabled"));
+    });
+  };
 
-  });
-
+  return {
+    run : run
+  }
 });

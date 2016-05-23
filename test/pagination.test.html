@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mocha Tests</title>
-    <link rel="stylesheet" href="../node_modules/mocha/mocha.css">
+    <link rel="stylesheet" href="../css/pagination.css">
+    <link rel="stylesheet" href="../bower_components/qunit/qunit/qunit.css">
+    <title>Tests</title>
   </head>
   <body>
-    <div id="mocha"></div>
-    <script data-main="./runner" src="../bower_components/requirejs/require.js"></script>
-    <!-- <script src="../node_modules/mocha/mocha.js"></script>
-    <script src="../node_modules/chai/chai.js"></script> -->
-    <!-- <script>mocha.setup('bdd')</script> -->
-
-    <!-- <script src="../js/pagination.component.js"></script> -->
-    <!-- <script src="./pagination.test.js"></script> -->
-    <!-- <script>
-      mocha.run();
-    </script> -->
+    <div id="qunit"></div>
+    <div id="qunit-fixture">
+      <ul class="pagination">
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+      </ul>
+    </div>
+    <script data-main="config" src="../bower_components/requirejs/require.js"></script>
   </body>
 </html>
