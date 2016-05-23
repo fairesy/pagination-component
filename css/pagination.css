@@ -34,6 +34,7 @@ input[type="checkbox"] {
   box-sizing: border-box;
 }
 
+/*TODO IE8에서는 pointer-events CSS가 작동하지 않는다.*/
 .disabled a{
   color: #d9d9d9;
   pointer-events: none;

@@ -5,7 +5,8 @@ require.config({
     "eventEmitter" : "../bower_components/eventEmitter/EventEmitter.min",
     "mocha" : "../node_modules/mocha/mocha",
     "chai" : "../node_modules/chai/chai"
-  }
+  },
+  nodeRequire: require
 });
 
 // require([

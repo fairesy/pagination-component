@@ -2,7 +2,7 @@ define(["jquery", "eventEmitter"], function($, EventEmitter){
   function pagination(element, option){
     this.ee = new EventEmitter();
     this.pagination = $(element);
-    this.option = option || {"totalNumberOfPages": 7, "unitSize" : 5};
+    this.option = option || {"totalNumberOfPages": 5, "unitSize" : 5};
     this.unitStart = 1;
     this.selectedLi; this.selectedIndex;
     this.prevArrow; this.nextArrow;
@@ -10,25 +10,11 @@ define(["jquery", "eventEmitter"], function($, EventEmitter){
     this.init();
   }
   pagination.prototype.init = function(){
-    this._setPaginationNumbers(1);
+    this._setPaginationNumbers(this.unitStart);
     this._setPrevNextArrow();
     this._setBeforeAfterArrowIfNeeded();
     this.pagination.on("click", "a", $.proxy(this, "_move"));
     console.log("pagination component initialization end");
-  }
-
-  pagination.prototype._setBeforeAfterArrowIfNeeded = function(){
-    if(this.option.totalNumberOfPages > this.option.unitSize){
-      this.pagination.prepend($("<li><a href='#'></a></li>"));
-      this.pagination.append($("<li><a href='#'></a></li>"));
-      this.pagination.css("width", "310px");
-      this.pagination.find("li").first().addClass("beforePrev disabled");
-      this.pagination.find("li").last().addClass("afterNext");
-      this.beforePrevArrow = $(".pagination .beforePrev");
-      this.beforePrevArrow.find("a").html("&#60;&#60;");
-      this.afterNextArrow = $(".pagination .afterNext");
-      this.afterNextArrow.find("a").html("&#62;&#62;");
-    }
   }
 
   pagination.prototype._setPrevNextArrow = function(){
@@ -43,9 +29,11 @@ define(["jquery", "eventEmitter"], function($, EventEmitter){
   }
   pagination.prototype._setPaginationNumbers = function(start){
     var $paginationIndexes = this.pagination.find("li");
+    var index = start;
     $paginationIndexes.map(function(id, pageLi){
       if(id !== 0 && id !== ($paginationIndexes.size()-1)){
-          return $(pageLi).find("a").text(id);
+          $(pageLi).find("a").text(index);
+          index += 1;
       }
     });
     $paginationIndexes.eq(1).addClass("selected");
@@ -101,13 +89,12 @@ define(["jquery", "eventEmitter"], function($, EventEmitter){
   /* _checkIfArrowShouldBeDisabled
    * 양 끝 인덱스인 경우 각각 < 혹은 >에 disabled 클래스를 추가한다.
    * 양 끝 인덱스가 아닌 경우 disabled 클래스를 제거한다.
-   * TODO 현재 1, 5와 같이 매직넘버가 들어가 있는 부분을 수정하여 재사용성을 높인다.
    */
   pagination.prototype._checkIfArrowShouldBeDisabled = function(selectedIndex){
     if(selectedIndex === this.unitStart){
       this.prevArrow.addClass("disabled");
       this.nextArrow.removeClass("disabled");
-    }else if(selectedIndex === this.option.unitSize){
+    }else if(selectedIndex === (this.unitStart + (this.option.unitSize-1))){
       this.nextArrow.addClass("disabled");
       this.prevArrow.removeClass("disabled");
     }else{
@@ -117,6 +104,21 @@ define(["jquery", "eventEmitter"], function($, EventEmitter){
       if(this.nextArrow.hasClass("disabled")){
         this.nextArrow.removeClass("disabled");
       }
+    }
+  }
+
+  /*추가구현 : 5페이지 이상인 경우 <<, >> 구현*/
+  pagination.prototype._setBeforeAfterArrowIfNeeded = function(){
+    if(this.option.totalNumberOfPages > this.option.unitSize){
+      this.pagination.prepend($("<li><a href='#'></a></li>"));
+      this.pagination.append($("<li><a href='#'></a></li>"));
+      this.pagination.css("width", "310px");
+      this.pagination.find("li").first().addClass("beforePrev disabled");
+      this.pagination.find("li").last().addClass("afterNext");
+      this.beforePrevArrow = $(".pagination .beforePrev");
+      this.beforePrevArrow.find("a").html("&#60;&#60;");
+      this.afterNextArrow = $(".pagination .afterNext");
+      this.afterNextArrow.find("a").html("&#62;&#62;");
     }
   }
 
